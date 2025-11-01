@@ -6,16 +6,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
+/**
+ * Класс для работы с файлами и директориями.
+ * Позволяет выполнять операцию копирования файла/директории и возвращает размер файлов в директории.
+ *
+ */
 public class FileManager {
 
-    private static final int BUFFER_SIZE = 8192; // размер буфера для копирования файла
+    private static final int BUFFER_SIZE = 8192; // Размер буфера для копирования файла
 
     private final File sourceFileOrDirectory;
     private final File destinationDirectory;
 
     public FileManager(String pathToSourceFile, String pathToDestinationDirectory) throws IOException {
-        this.sourceFileOrDirectory = FileValidator.validateSourceFile(pathToSourceFile);
-        this.destinationDirectory = FileValidator.validateDestination(pathToDestinationDirectory);
+        this.sourceFileOrDirectory = FileValidator.validateSourceFileAndGetFile(pathToSourceFile);
+        this.destinationDirectory = FileValidator.validateDestinationAndGetFile(pathToDestinationDirectory);
 
         if (sourceFileOrDirectory.getCanonicalFile().equals(destinationDirectory.getCanonicalFile())) {
             throw new IllegalArgumentException("Source and destination file can not be the same");
@@ -74,14 +79,7 @@ public class FileManager {
     private void copyDirectory(File copiedDirectory, File destinationToCopy) throws IOException {
         File newDirectoryToCopy = new File(destinationToCopy, copiedDirectory.getName());
 
-        if (!newDirectoryToCopy.exists()) {
-            if (!newDirectoryToCopy.mkdirs()) {
-                throw new IOException("Failed to create directory: " + newDirectoryToCopy.getPath());
-            }
-        }
-
         File[] directoryFiles = copiedDirectory.listFiles();
-
         if (directoryFiles != null) {
             for (File file : directoryFiles) {
                 if (file.isFile()) {
@@ -94,8 +92,6 @@ public class FileManager {
 
     }
 
-    public File getDestinationDirectory() {
-        return destinationDirectory;
-    }
+    public File getDestinationDirectory() { return destinationDirectory; }
 
 }
