@@ -62,7 +62,7 @@ public class FileValidator {
         }
 
         /*
-        * Создает директорию назначения со всеми её родительскими директориями (если они так же не созданы)
+        * Создает директорию назначения, а так же создает родительские директории если они не существуют
          */
         if (!destination.isDirectory() && !destination.mkdirs()) {
             throw new IOException("Failed to create directories");
