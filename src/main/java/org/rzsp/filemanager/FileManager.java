@@ -114,7 +114,7 @@ public class FileManager {
      *
      * @param copiedDirectory копируемая директория
      * @param destinationToCopy директория назначения, куда копируется copiedDirectory
-     * @throws IOException
+     * @throws IOException ошибка ввода-вывода
      */
     private void copyDirectory(File copiedDirectory, File destinationToCopy) throws IOException {
         /*
