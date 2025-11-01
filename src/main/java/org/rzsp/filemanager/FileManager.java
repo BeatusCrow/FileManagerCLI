@@ -80,12 +80,23 @@ public class FileManager {
                 .sum();
     }
 
-
-    private void copyFile(File copiedFile, File destinationToCopy) throws IOException {
-        destinationToCopy = new File(destinationToCopy, copiedFile.getName());
+    /**
+     * Копирует файл
+     *
+     * @param copiedFileOrDirectory копируемый файл/директория
+     * @param destinationToCopy директория назначения, куда копируется copiedFileOrDirectory
+     * @throws IOException если происходит ошибка ввода и вывода
+     */
+    private void copyFile(File copiedFileOrDirectory, File destinationToCopy) throws IOException {
+        /*
+        * Создает файл назначения, куда будет копироваться исходный файл
+        * Например: мы копируем /home/user/example/text.txt в /home/user/test
+        *           Код создаст /home/user/test/text.txt, где destinationToCopy -> /home/user/test, а copiedFileOrDirectory.getName() -> text.txt
+         */
+        destinationToCopy = new File(destinationToCopy, copiedFileOrDirectory.getName());
 
         try (
-                FileInputStream in = new FileInputStream(copiedFile);
+                FileInputStream in = new FileInputStream(copiedFileOrDirectory);
                 FileOutputStream out = new FileOutputStream(destinationToCopy)
         ) {
             byte[] buffer = new byte[BUFFER_SIZE];
@@ -98,7 +109,19 @@ public class FileManager {
 
     }
 
+    /**
+     * Копирует директорию,
+     *
+     * @param copiedDirectory копируемая директория
+     * @param destinationToCopy директория назначения, куда копируется copiedDirectory
+     * @throws IOException
+     */
     private void copyDirectory(File copiedDirectory, File destinationToCopy) throws IOException {
+        /*
+         * Создает файл назначения, куда будет копироваться исходная директория
+         * Например: мы копируем /home/user/example/someDirectory в /home/user/test
+         *           Код создаст /home/user/test/someDirectory, где destinationToCopy -> /home/user/test, а copiedFileOrDirectory.getName() -> someDirectory
+         */
         File newDirectoryToCopy = new File(destinationToCopy, copiedDirectory.getName());
 
         File[] directoryFiles = copiedDirectory.listFiles();
