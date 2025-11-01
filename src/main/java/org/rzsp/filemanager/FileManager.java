@@ -90,7 +90,7 @@ public class FileManager {
     private void copyFile(File copiedFileOrDirectory, File destinationToCopy) throws IOException {
         /*
         * Создает файл назначения, куда будет копироваться исходный файл
-        * Например: мы копируем /home/user/example/text.txt в /home/user/test
+        * Например: Копируем /home/user/example/text.txt в /home/user/test
         *           Код создаст /home/user/test/text.txt, где destinationToCopy -> /home/user/test, а copiedFileOrDirectory.getName() -> text.txt
          */
         destinationToCopy = new File(destinationToCopy, copiedFileOrDirectory.getName());
@@ -118,7 +118,7 @@ public class FileManager {
      */
     private void copyDirectory(File copiedDirectory, File destinationToCopy) throws IOException {
         /*
-         * Создает файл назначения, куда будет копироваться исходная директория
+         * Создает директорию назначения, куда будет копироваться исходная директория
          * Например: мы копируем /home/user/example/someDirectory в /home/user/test
          *           Код создаст /home/user/test/someDirectory, где destinationToCopy -> /home/user/test, а copiedFileOrDirectory.getName() -> someDirectory
          */
