@@ -1,14 +1,19 @@
 package org.rzsp.filemanager;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 
 public class Main {
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws IOException {
+        logger.info("Application is started");
 
         try {
             if (args.length != 2) {
-                System.err.println("Usage: java Main <source file>, <destination directory>");
+                logger.error("Usage: java Main <source file>, <destination directory>");
                 return;
             }
 
@@ -17,10 +22,13 @@ public class Main {
 
             FileManager fileManager = new FileManager(pathToSourceFile, pathToDestinationFile);
             fileManager.copy();
-            System.out.println("Copied directory size: " + fileManager.getDirectorySize(fileManager.getDestinationDirectory()) + " bytes");
+            logger.info("Copied directory size: {} bytes", fileManager.getDirectorySize(fileManager.getDestinationDirectory()));
 
         } catch (Exception e) {
+            logger.error("Exception: {}", e.getMessage());
             System.err.println("Exception: " + e.getMessage());
+        } finally {
+            logger.info("Application is finished");
         }
 
     }

@@ -1,5 +1,8 @@
 package org.rzsp.filemanager;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,6 +14,7 @@ import java.util.Arrays;
  * Позволяет выполнять операцию копирования файла/директории и возвращает размер файлов в директории.
  */
 public class FileManager {
+    private static final Logger logger = LogManager.getLogger(FileManager.class);
 
     private static final int BUFFER_SIZE = 8192; // Размер буфера для копирования файла
 
@@ -26,12 +30,15 @@ public class FileManager {
      * @throws IllegalArgumentException если копируемая директория совпадает с директорией назначения
      */
     public FileManager(String pathToSourceFile, String pathToDestinationDirectory) throws IOException {
+        logger.debug("Initializing File Manager");
         this.sourceFileOrDirectory = FileValidator.validateSourceFileAndGetFile(pathToSourceFile);
         this.destinationDirectory = FileValidator.validateDestinationAndGetFile(pathToDestinationDirectory);
 
         if (sourceFileOrDirectory.getCanonicalFile().equals(destinationDirectory.getCanonicalFile())) {
-            throw new IllegalArgumentException("Source and destination file can not be the same");
+            logger.error("Source directory and destination directory can not be the same");
+            throw new IllegalArgumentException("Source directory and destination directory can not be the same");
         }
+        logger.debug("File Manager is successfully initialized");
     }
 
     /**
@@ -43,15 +50,17 @@ public class FileManager {
      * @see #copyDirectory(File, File)
      */
     public void copy() throws IOException {
+        logger.debug("Starting copy");
 
         if (sourceFileOrDirectory.isFile()) {
             copyFile(sourceFileOrDirectory, destinationDirectory);
         } else if (sourceFileOrDirectory.isDirectory()) {
             copyDirectory(sourceFileOrDirectory, destinationDirectory);
         } else {
+            logger.error("Unsupported file type: {}", sourceFileOrDirectory);
             throw new IOException("Unsupported file type: " + sourceFileOrDirectory);
         }
-
+        logger.debug("Copying is ended successfully");
     }
 
     /**
@@ -99,6 +108,7 @@ public class FileManager {
         File newDirectoryToCopy = new File(destinationToCopy, copiedDirectory.getName());
         // Создаем директорию на устройстве
         if (!newDirectoryToCopy.exists() && !newDirectoryToCopy.mkdir()) {
+            logger.error("Failed to create directory {}", newDirectoryToCopy);
             throw new IOException("Failed to create directory: " + newDirectoryToCopy);
         }
 
