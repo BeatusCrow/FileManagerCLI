@@ -31,12 +31,14 @@ public class FileManager {
      */
     public FileManager(String pathToSourceFile, String pathToDestinationDirectory) throws IOException {
         logger.debug("Initializing File Manager");
+
         this.sourceFileOrDirectory = FileValidator.validateSourceFileAndGetFile(pathToSourceFile);
         this.destinationDirectory = FileValidator.validateDestinationAndGetFile(pathToDestinationDirectory);
 
         if (sourceFileOrDirectory.getCanonicalFile().equals(destinationDirectory.getCanonicalFile())) {
             throw new IllegalArgumentException("Source directory and destination directory can not be the same");
         }
+
         logger.debug("File Manager is successfully initialized");
     }
 
@@ -58,6 +60,7 @@ public class FileManager {
         } else {
             throw new IOException("Unsupported file type: " + sourceFileOrDirectory);
         }
+
         logger.debug("Copying is ended successfully");
     }
 

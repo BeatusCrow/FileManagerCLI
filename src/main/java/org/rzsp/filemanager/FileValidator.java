@@ -40,6 +40,7 @@ public class FileValidator {
         }
 
         logger.debug("Validation for source path is successful");
+
         return sourceFileOrDirectory;
     }
 
@@ -70,6 +71,7 @@ public class FileValidator {
         }
 
         logger.debug("Validation for destination path is successful");
+
         return destination;
     }
 
