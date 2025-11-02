@@ -55,6 +55,67 @@ public class FileManager {
     }
 
     /**
+     * Копирует файл в указанную директорию назначения.
+     *
+     * @param copiedFileOrDirectory копируемый файл/директория
+     * @param destinationToCopy директория назначения, куда копируется copiedFileOrDirectory
+     * @throws IOException если происходит ошибка ввода и вывода
+     */
+    private void copyFile(File copiedFileOrDirectory, File destinationToCopy) throws IOException {
+        /*
+         * Создает файл назначения, куда будет копироваться исходный файл
+         * Например: Копируем /home/user/example/text.txt в /home/user/test
+         *           Код создаст /home/user/test/text.txt, где destinationToCopy -> /home/user/test, а copiedFileOrDirectory.getName() -> text.txt
+         */
+        destinationToCopy = new File(destinationToCopy, copiedFileOrDirectory.getName());
+
+        try (
+                FileInputStream in = new FileInputStream(copiedFileOrDirectory);
+                FileOutputStream out = new FileOutputStream(destinationToCopy)
+        ) {
+            byte[] buffer = new byte[BUFFER_SIZE];
+
+            int bytesRead;
+            while ((bytesRead = in.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+            }
+        }
+
+    }
+
+    /**
+     * Рекурсирвно (если директория содержит в себе директорию/директории) копирует содержимое указанной директории в директорию назначения.
+     *
+     * @param copiedDirectory копируемая директория
+     * @param destinationToCopy директория назначения, куда копируется copiedDirectory
+     * @throws IOException ошибка ввода-вывода
+     */
+    private void copyDirectory(File copiedDirectory, File destinationToCopy) throws IOException {
+        /*
+         * Создает директорию назначения, куда будет копироваться исходная директория
+         * Например: мы копируем /home/user/example/someDirectory в /home/user/test
+         *           Код создаст /home/user/test/someDirectory, где destinationToCopy -> /home/user/test, а copiedFileOrDirectory.getName() -> someDirectory
+         */
+        File newDirectoryToCopy = new File(destinationToCopy, copiedDirectory.getName());
+        // Создаем директорию на устройстве
+        if (!newDirectoryToCopy.exists() && !newDirectoryToCopy.mkdir()) {
+            throw new IOException("Failed to create directory: " + newDirectoryToCopy);
+        }
+
+        File[] directoryFiles = copiedDirectory.listFiles();
+        if (directoryFiles != null) {
+            for (File file : directoryFiles) {
+                if (file.isFile()) {
+                    copyFile(file, newDirectoryToCopy);
+                } else if (file.isDirectory()) {
+                    copyDirectory(file, newDirectoryToCopy);
+                }
+            }
+        }
+
+    }
+
+    /**
      * Возвращает размер всех файлов в директории.
      * Если директория содержит другие директории, то рекурсирвно возвращается их размер и суммируется.
      *
@@ -78,63 +139,6 @@ public class FileManager {
                     }
                 })
                 .sum();
-    }
-
-    /**
-     * Копирует файл
-     *
-     * @param copiedFileOrDirectory копируемый файл/директория
-     * @param destinationToCopy директория назначения, куда копируется copiedFileOrDirectory
-     * @throws IOException если происходит ошибка ввода и вывода
-     */
-    private void copyFile(File copiedFileOrDirectory, File destinationToCopy) throws IOException {
-        /*
-        * Создает файл назначения, куда будет копироваться исходный файл
-        * Например: Копируем /home/user/example/text.txt в /home/user/test
-        *           Код создаст /home/user/test/text.txt, где destinationToCopy -> /home/user/test, а copiedFileOrDirectory.getName() -> text.txt
-         */
-        destinationToCopy = new File(destinationToCopy, copiedFileOrDirectory.getName());
-
-        try (
-                FileInputStream in = new FileInputStream(copiedFileOrDirectory);
-                FileOutputStream out = new FileOutputStream(destinationToCopy)
-        ) {
-            byte[] buffer = new byte[BUFFER_SIZE];
-
-            int bytesRead;
-            while ((bytesRead = in.read(buffer)) != -1) {
-                out.write(buffer, 0, bytesRead);
-            }
-        }
-
-    }
-
-    /**
-     * Копирует директорию,
-     *
-     * @param copiedDirectory копируемая директория
-     * @param destinationToCopy директория назначения, куда копируется copiedDirectory
-     * @throws IOException ошибка ввода-вывода
-     */
-    private void copyDirectory(File copiedDirectory, File destinationToCopy) throws IOException {
-        /*
-         * Создает директорию назначения, куда будет копироваться исходная директория
-         * Например: мы копируем /home/user/example/someDirectory в /home/user/test
-         *           Код создаст /home/user/test/someDirectory, где destinationToCopy -> /home/user/test, а copiedFileOrDirectory.getName() -> someDirectory
-         */
-        File newDirectoryToCopy = new File(destinationToCopy, copiedDirectory.getName());
-
-        File[] directoryFiles = copiedDirectory.listFiles();
-        if (directoryFiles != null) {
-            for (File file : directoryFiles) {
-                if (file.isFile()) {
-                    copyFile(file, newDirectoryToCopy);
-                } else if (file.isDirectory()) {
-                    copyDirectory(file, newDirectoryToCopy);
-                }
-            }
-        }
-
     }
 
     public File getDestinationDirectory() { return destinationDirectory; }

@@ -53,19 +53,12 @@ public class FileValidator {
 
         File destination = new File(pathToDestinationDirectory);
 
-        if (!destination.exists()) {
-            throw new IllegalArgumentException("File \"" + destination + "\" is not found");
+        if (!destination.isDirectory() && !destination.mkdirs()) { // Создает директорию назначения, а так же создает родительские директории если они не существуют
+            throw new IOException("Failed to create directories");
         }
 
         if (!destination.isDirectory()) {
             throw new IllegalArgumentException("Destination must be a directory: " + destination);
-        }
-
-        /*
-        * Создает директорию назначения, а так же создает родительские директории если они не существуют
-         */
-        if (!destination.isDirectory() && !destination.mkdirs()) {
-            throw new IOException("Failed to create directories");
         }
 
         return destination;

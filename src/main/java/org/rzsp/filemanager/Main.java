@@ -20,7 +20,7 @@ public class Main {
             System.out.println("Copied directory size: " + fileManager.getDirectorySize(fileManager.getDestinationDirectory()) + " bytes");
 
         } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
+            System.err.println("Exception: " + e.getMessage());
         }
 
     }
