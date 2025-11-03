@@ -1,0 +1,19 @@
+2025-11-02 20:19:11.068 [main] INFO  org.rzsp.filemanager.Main - Application is started
+2025-11-02 20:19:11.069 [main] DEBUG org.rzsp.filemanager.FileManager - Initializing File Manager
+2025-11-02 20:19:11.070 [main] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /home/nokk/test
+2025-11-02 20:19:11.070 [main] DEBUG org.rzsp.filemanager.FileValidator - Validation for source path is successful
+2025-11-02 20:19:11.070 [main] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: /home/nokk/test
+2025-11-02 20:19:11.070 [main] DEBUG org.rzsp.filemanager.FileValidator - Validation for destination path is successful
+2025-11-02 20:19:11.070 [main] ERROR org.rzsp.filemanager.Main - Exception: Source directory and destination directory can not be the same
+2025-11-02 20:19:11.070 [main] INFO  org.rzsp.filemanager.Main - Application is finished
+2025-11-02 20:19:23.171 [main] INFO  org.rzsp.filemanager.Main - Application is started
+2025-11-02 20:19:23.172 [main] DEBUG org.rzsp.filemanager.FileManager - Initializing File Manager
+2025-11-02 20:19:23.173 [main] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /home/nokk/test
+2025-11-02 20:19:23.173 [main] DEBUG org.rzsp.filemanager.FileValidator - Validation for source path is successful
+2025-11-02 20:19:23.173 [main] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: /home/nokk/hi
+2025-11-02 20:19:23.173 [main] DEBUG org.rzsp.filemanager.FileValidator - Validation for destination path is successful
+2025-11-02 20:19:23.173 [main] DEBUG org.rzsp.filemanager.FileManager - File Manager is successfully initialized
+2025-11-02 20:19:23.173 [main] DEBUG org.rzsp.filemanager.FileManager - Starting copy
+2025-11-02 20:19:23.373 [main] DEBUG org.rzsp.filemanager.FileManager - Copying is ended successfully
+2025-11-02 20:19:23.376 [main] INFO  org.rzsp.filemanager.Main - Copied directory size: 599458482 bytes
+2025-11-02 20:19:23.376 [main] INFO  org.rzsp.filemanager.Main - Application is finished

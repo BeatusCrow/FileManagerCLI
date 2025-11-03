@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.rzsp.filemanager.TestFileManager" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-03T17:37:02.953Z" hostname="arch" time="0.179">
+  <properties/>
+  <testcase name="testFileManagerConstructorWithSourceAndDestinationDirectoryEquals()" classname="org.rzsp.filemanager.TestFileManager" time="0.179"/>
+  <system-out><![CDATA[20:37:03.126 [Test worker] DEBUG org.rzsp.filemanager.FileManager - Initializing File Manager
+20:37:03.129 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /tmp/tempDir9783131652047182201
+20:37:03.129 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for source path is successful
+20:37:03.129 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: /tmp/tempDir9783131652047182201
+20:37:03.129 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for destination path is successful
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

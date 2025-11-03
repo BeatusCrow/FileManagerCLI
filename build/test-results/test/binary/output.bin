@@ -1,0 +1,5 @@
+^20:37:03.126 [Test worker] DEBUG org.rzsp.filemanager.FileManager - Initializing File Manager
+~20:37:03.129 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /tmp/tempDir9783131652047182201
+o20:37:03.129 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for source path is successful
+ƒ20:37:03.129 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: /tmp/tempDir9783131652047182201
+t20:37:03.129 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for destination path is successful

@@ -151,6 +151,8 @@ public class FileManager {
                 .sum();
     }
 
-    public File getDestinationDirectory() { return destinationDirectory; }
+    public File getDestinationDirectory() {
+        return destinationDirectory;
+    }
 
 }
