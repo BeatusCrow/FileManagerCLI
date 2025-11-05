@@ -1,17 +1,0 @@
-^21:11:29.547 [Test worker] DEBUG org.rzsp.filemanager.FileManager - Initializing File Manager
-~21:11:29.550 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /tmp/tempDir2658381742454189435
-o21:11:29.550 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for source path is successful
-ƒ21:11:29.550 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: /tmp/tempDir2658381742454189435
-t21:11:29.550 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for destination path is successful
-g21:11:29.557 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path:    
-|21:11:29.558 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /home/user/file/not/exist.txt
-d21:11:29.561 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: 
-21:11:29.562 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: /tmp/dir6189505924020571512
-t21:11:29.562 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for destination path is successful
-h21:11:29.564 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: null
-	_21:11:29.565 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: 
-
-c21:11:29.566 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: null
-c21:11:29.567 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path:     
-€21:11:29.568 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /tmp/text17820857622313881134.txt
-o21:11:29.568 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for source path is successful
