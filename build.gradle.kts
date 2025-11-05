@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("application")
 }
 
 group = "org.rzsp"
@@ -20,11 +21,18 @@ tasks.test {
     useJUnitPlatform()
 }
 
+application {
+    mainClass.set("org.rzsp.filemanager.Main")
+}
+
 tasks.jar {
     manifest {
         attributes["Main-Class"] = "org.rzsp.filemanager.Main"
     }
-
-    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    from({
+        configurations.runtimeClasspath.get().map {
+            if (it.isDirectory) it else zipTree(it)
+        }
+    })
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
