@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.rzsp.filemanager.TestFileValidator" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-11-05T18:11:29.556Z" hostname="arch" time="0.012">
+  <properties/>
+  <testcase name="pathToDestinationDirectoryIsSpaces()" classname="org.rzsp.filemanager.TestFileValidator" time="0.001"/>
+  <testcase name="sourceFileIsNotExist()" classname="org.rzsp.filemanager.TestFileValidator" time="0.001"/>
+  <testcase name="pathToDestinationDirectoryIsBlank()" classname="org.rzsp.filemanager.TestFileValidator" time="0.001"/>
+  <testcase name="pathToDestinationDirectoryIsCorrect()" classname="org.rzsp.filemanager.TestFileValidator" time="0.001"/>
+  <testcase name="pathToDestinationDirectoryIsNull()" classname="org.rzsp.filemanager.TestFileValidator" time="0.0"/>
+  <testcase name="pathToSourceFileOrDirectoryIsBlank()" classname="org.rzsp.filemanager.TestFileValidator" time="0.0"/>
+  <testcase name="pathToSourceFileOrDirectoryIsNull()" classname="org.rzsp.filemanager.TestFileValidator" time="0.0"/>
+  <testcase name="pathToSourceFileOrDirectoryIsSpaces()" classname="org.rzsp.filemanager.TestFileValidator" time="0.0"/>
+  <testcase name="pathToSourceFileOrDirectoryIsCorrect()" classname="org.rzsp.filemanager.TestFileValidator" time="0.001"/>
+  <system-out><![CDATA[21:11:29.557 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path:    
+21:11:29.558 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /home/user/file/not/exist.txt
+21:11:29.561 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: 
+21:11:29.562 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: /tmp/dir6189505924020571512
+21:11:29.562 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for destination path is successful
+21:11:29.564 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation destination path: null
+21:11:29.565 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: 
+21:11:29.566 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: null
+21:11:29.567 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path:     
+21:11:29.568 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validating source path: /tmp/text17820857622313881134.txt
+21:11:29.568 [Test worker] DEBUG org.rzsp.filemanager.FileValidator - Validation for source path is successful
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
