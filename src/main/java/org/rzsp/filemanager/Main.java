@@ -9,14 +9,13 @@ public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     /**
-     * Главный класс для выполнения функции копирования файла/директории и вывода размера директории, куда копируется файл/директория.
+     * Главный метод для выполнения функции копирования файла/директории и вывода размера директории, куда копируется файл/директория.
      *
      * @param args:
      *            args[0] - путь к копируемому файлу/директории;
      *            args[1] - путь директории, куда копируется файл или файлы директории.
-     * @throws IOException ошибка ввода вывода
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         logger.info("Application is started");
 
         try {
