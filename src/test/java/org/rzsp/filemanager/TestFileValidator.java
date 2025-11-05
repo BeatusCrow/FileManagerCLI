@@ -64,10 +64,15 @@ public class TestFileValidator {
     void sourceFileIsNotExist() throws IOException {
         String pathToNotExistFile = "wrong_path_to_file";
 
-        Exception exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> FileValidator.validateSourceFileAndGetFile(pathToNotExistFile)
-        );
+    // Ловим любое исключение для диагностики, а не только IllegalArgumentException (на всякий случай)
+    Exception exception = assertThrows(
+            Exception.class, // или Throwable.class
+            () -> FileValidator.validateSourceFileAndGetFile(pathToNotExistFile)
+    );
+    
+    // А уже тут проверяем тип исключения
+    assertTrue(exception instanceof IllegalArgumentException, 
+               "Expected IllegalArgumentException but got: " + exception.getClass());
 
         assertEquals("File \""+ pathToNotExistFile + "\" is not found", exception.getMessage());
     }
